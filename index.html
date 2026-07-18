@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Art Exhibition</title>
+    <link rel="stylesheet" href="styles/style.css"/>
+</head>
+<body>
+
+    <div id="custom-cursor"></div>
+    <div id="custom-cursor-ring"></div>
+
+    <header class="animate-fade delay-1">
+        <h1>Nik's Gallery</h1>
+        <p>Виртуальное экспозиционное пространство</p>
+    </header>
+
+    <main class="gallery-container animate-fade delay-2">
+        
+        <a href="exhibit.html?id=1" class="exhibit-link hover-target">
+            <div class="exhibit-card">
+                <div class="image-frame">
+                    <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80" alt="Форма и Мысль">
+                </div>
+                <div class="exhibit-info">
+                    <h3 class="exhibit-title">Форма и Мысль</h3>
+                    <div class="exhibit-meta">
+                        <span>Бронза / Литье</span>
+                        <span>2026</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="exhibit.html?id=2" class="exhibit-link hover-target">
+            <div class="exhibit-card">
+                <div class="image-frame">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" alt="Квантовый Тор">
+                </div>
+                <div class="exhibit-info">
+                    <h3 class="exhibit-title">Квантовый Тор</h3>
+                    <div class="exhibit-meta">
+                        <span>3D Печать</span>
+                        <span>2026</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        </main>
+
+    <script src="js/cursor.js"></script>
+    <script>
+        initCursorHover('#00ff88');
+    </script>
+</body>
+</html>
