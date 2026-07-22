@@ -1,0 +1,30 @@
+name: Build and Test Docker Image
+
+# Сценарий запускается автоматически при каждом push в ветку main
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-image:
+    name: Build Docker Image in GitHub Cloud
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Скачиваем свежий код из репозитория на виртуальный сервер GitHub
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # 2. Настраиваем окружение для сборки Docker (Buildx)
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    # 3. Запускаем сборку нашего мультиэтапного Dockerfile
+    # Пока что мы просто тестируем сборку, чтобы убедиться, что нет ошибок
+    - name: Build Docker Image
+      uses: docker/build-push-action@v6
+      with:
+        context: .
+        file: ./Dockerfile
+        push: false
+        tags: my-art-gallery:latest
