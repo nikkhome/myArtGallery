@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  # 1. База данных PostgreSQL
+  db:
+    image: postgres:16-alpine
+    container_name: gallery_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres_password
+      POSTGRES_DB: art_gallery
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  # 2. Бэкенд Node.js
+  backend:
+    build: ./server
+    container_name: gallery_backend
+    environment:
+      DATABASE_URL: postgres://postgres:postgres_password@db:5432/art_gallery
+      PORT: 5000
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+
+  # 3. Твой веб-сайт (Nginx)
+  frontend:
+    build: .
+    container_name: gallery_frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:
